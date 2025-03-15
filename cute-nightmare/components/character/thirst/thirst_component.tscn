@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhp157c72jt0l"]
+
+[ext_resource type="Script" uid="uid://bjt4vlaha8dxd" path="res://components/character/thirst/thirst_component.gd" id="1_ytw8p"]
+[ext_resource type="PackedScene" uid="uid://dfjny6iqlooj2" path="res://src/atoms/label/debug_label.tscn" id="2_qwgh5"]
+
+[node name="ThirstComponent" type="Node3D"]
+script = ExtResource("1_ytw8p")
+
+[node name="debugLabel" parent="." instance=ExtResource("2_qwgh5")]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://di78d8pjnwrke"]
+
+[ext_resource type="PackedScene" uid="uid://dv05pj4s1tpw4" path="res://src/organisms/prototype_level/constructive_solid_geometry.tscn" id="1_q3of6"]
+[ext_resource type="PackedScene" uid="uid://28q8lymjqg2l" path="res://src/organisms/player/player.tscn" id="2_cacf4"]
+[ext_resource type="PackedScene" uid="uid://cpnmv7ich6od2" path="res://src/molecules/assets/box.tscn" id="3_cacf4"]
+[ext_resource type="PackedScene" uid="uid://dc8ebavmsl118" path="res://src/organisms/enemies/npc/npc.tscn" id="4_kccwn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdsd1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 2.85
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_giqlu"]
+sky_material = SubResource("ProceduralSkyMaterial_fdsd1")
+
+[sub_resource type="Environment" id="Environment_bbqit"]
+background_mode = 2
+sky = SubResource("Sky_giqlu")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cacf4"]
+vertices = PackedVector3Array(-22.5, 5.5, 6, -1.1, 5.5, 6, 0, 5.5, 3.2, 3, 5.5, 1.9, 3, 5.5, -22.5, -22.5, 5.5, -22.5, 5.8, 5.5, 3, 7.1, 5.5, 6, 22.5, 5.5, 6, 22.5, 5.5, -22.5, 0, 8.25, 5.8, 0, 8.25, 6.2, 0.800001, 8.25, 8.1, 2.8, 8.25, 9, 3.2, 8.25, 9, 5.1, 8.25, 8.2, 6, 8.25, 6.2, 6, 8.25, 5.8, 5.2, 8.25, 3.9, 3.2, 8.25, 3, 2.8, 8.25, 3, 0.9, 8.25, 3.8, 3, 5.5, 22.5, 3, 5.5, 10.1, 0, 5.5, 8.8, -22.5, 5.5, 22.5, 5.8, 5.5, 9, 22.5, 5.5, 22.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 3, 8), PackedInt32Array(8, 3, 4), PackedInt32Array(8, 4, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(15, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 10), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 12), PackedInt32Array(16, 12, 10), PackedInt32Array(16, 10, 19), PackedInt32Array(24, 23, 22), PackedInt32Array(24, 22, 1), PackedInt32Array(1, 22, 0), PackedInt32Array(0, 22, 25), PackedInt32Array(22, 23, 26), PackedInt32Array(26, 7, 22), PackedInt32Array(22, 7, 8), PackedInt32Array(22, 8, 27)]
+cell_size = 0.1
+agent_height = 2.0
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bbqit")
+
+[node name="Player" parent="." instance=ExtResource("2_cacf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+
+[node name="Box" parent="." instance=ExtResource("3_cacf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76119, -0.581874, 8.82985)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+navigation_mesh = SubResource("NavigationMesh_cacf4")
+
+[node name="PrototypeLevel" parent="NavigationRegion3D" instance=ExtResource("1_q3of6")]
+
+[node name="CSGBox3D" parent="NavigationRegion3D/PrototypeLevel" index="2"]
+transform = Transform3D(-1.16784e-08, 0, 11.0897, 0, 2.1767, 0, -0.267171, 0, -4.84748e-07, -11.814, 5.77071, 5)
+
+[node name="NPC" parent="." instance=ExtResource("4_kccwn")]
+transform = Transform3D(0.0632783, 0, 0.997996, 0, 1, 0, -0.997996, 0, 0.0632783, -11.4273, -0.487046, 1.86343)
+
+[node name="NPC" parent="NPC" instance=ExtResource("4_kccwn")]
+transform = Transform3D(0.0632783, 0, 0.997996, 0, 1, 0, -0.997996, 0, 0.0632783, -15.2355, -0.487046, 2.10489)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8233, 0, 3.79954)
+
+[editable path="NavigationRegion3D/PrototypeLevel"]

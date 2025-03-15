@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmjog7vvluu7t"]
+
+[ext_resource type="Theme" uid="uid://dfm5x5wpude3u" path="res://assets/CN_theme.tres" id="1_efjms"]
+[ext_resource type="Script" uid="uid://lnrbmvo8b8dx" path="res://src/atoms/volume_slider/volume_slider.gd" id="1_ek88t"]
+
+[node name="volume_slider" type="HSlider"]
+offset_top = -2.0
+offset_right = 151.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+theme = ExtResource("1_efjms")
+min_value = -10.0
+max_value = 10.0
+step = 0.1
+script = ExtResource("1_ek88t")

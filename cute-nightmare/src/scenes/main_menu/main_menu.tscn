@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0gan53ncwbb3"]
+
+[ext_resource type="Script" uid="uid://733dbgp3e23i" path="res://src/scenes/main_menu/main_menu.gd" id="1_cr2su"]
+[ext_resource type="Texture2D" uid="uid://c880g7d0vuvdi" path="res://assets/UI/menu/bg.png" id="1_felax"]
+[ext_resource type="Texture2D" uid="uid://dbt4trdrx38pu" path="res://assets/UI/menu/title.png" id="2_cr2su"]
+[ext_resource type="Texture2D" uid="uid://4kqxerdfsffu" path="res://assets/UI/menu/play_button.png" id="3_frlin"]
+[ext_resource type="Texture2D" uid="uid://0tbodemi6tum" path="res://assets/UI/menu/exit_button.png" id="4_0y5yg"]
+[ext_resource type="Texture2D" uid="uid://dibugoqhe0hug" path="res://assets/UI/menu/settings_button.png" id="5_yfy8e"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cr2su")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -8.0
+offset_right = 1949.0
+offset_bottom = 1072.0
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("1_felax")
+
+[node name="title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0125
+anchor_top = -0.0666667
+anchor_right = 0.0125
+anchor_bottom = -0.0666667
+offset_left = -1.0
+offset_top = 23.0
+offset_right = 1919.0
+offset_bottom = 1103.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_cr2su")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 527.0
+offset_right = 1514.0
+offset_bottom = 789.0
+scale = Vector2(0.68, 0.68)
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="settings" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_yfy8e")
+
+[node name="play" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_frlin")
+
+[node name="exit" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_0y5yg")
+
+[connection signal="mouse_entered" from="GridContainer/settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="GridContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="GridContainer/play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/play" to="." method="_on_play_mouse_exited"]
+[connection signal="pressed" from="GridContainer/play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="GridContainer/exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="GridContainer/exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="GridContainer/exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpnmv7ich6od2"]
+
+[ext_resource type="PackedScene" uid="uid://bbevji8ejfhsp" path="res://assets/UI/icons/other/box/box.blend" id="1_0tf0k"]
+[ext_resource type="Script" uid="uid://w4puwar78pl6" path="res://src/molecules/powerUp/power_up.gd" id="2_0rxce"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tf0k"]
+size = Vector3(2.27258, 1.9668, 1.61847)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tf0k"]
+
+[node name="Box" instance=ExtResource("1_0tf0k")]
+collision_layer = 0
+
+[node name="box" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0.5, 0)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "boxAction"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114319, 0.483398, -0.0322571)
+shape = SubResource("BoxShape3D_0tf0k")
+
+[node name="PowerUp" type="Area3D" parent="." index="3" node_paths=PackedStringArray("mesh")]
+collision_layer = 2
+script = ExtResource("2_0rxce")
+mesh = NodePath("../box")
+add_health = 3
+add_stamina = 6
+add_hunger = 9
+add_thirst = -13
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.477899, 0)
+shape = SubResource("SphereShape3D_0tf0k")
+debug_color = Color(0.850612, 0.767656, 0, 0.784314)

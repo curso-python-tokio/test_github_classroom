@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4lvaqfcr4ydm"]
+
+[ext_resource type="Script" uid="uid://roeyixaqay7c" path="res://components/character/movement/player_movement_component.gd" id="1_cy6yd"]
+
+[node name="PlayerMovementComponent" type="Node3D" node_paths=PackedStringArray("camera", "controlled_body", "rotation_pivot")]
+script = ExtResource("1_cy6yd")
+camera = NodePath("")
+controlled_body = NodePath("")
+rotation_pivot = NodePath("")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+height = 2.0

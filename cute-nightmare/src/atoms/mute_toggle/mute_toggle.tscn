@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4473wfjtt52t"]
+
+[ext_resource type="Script" uid="uid://datg80wf61brb" path="res://src/atoms/mute_toggle/mute_toggle.gd" id="1_iue7r"]
+[ext_resource type="Theme" uid="uid://dfm5x5wpude3u" path="res://assets/CN_theme.tres" id="1_rytxb"]
+
+[node name="MuteToggle" type="CheckButton"]
+theme = ExtResource("1_rytxb")
+script = ExtResource("1_iue7r")

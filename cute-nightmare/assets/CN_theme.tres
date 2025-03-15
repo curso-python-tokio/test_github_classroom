@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dfm5x5wpude3u"]
+
+[ext_resource type="StyleBox" uid="uid://ckgjy1hic1s0n" path="res://assets/colores/transparent.tres" id="1_wd4oj"]
+[ext_resource type="StyleBox" uid="uid://dc8i8n8wel6v1" path="res://assets/colores/rosa oscuro.tres" id="2_pyss0"]
+[ext_resource type="StyleBox" uid="uid://bjltl4m4shy18" path="res://assets/colores/azul.tres" id="3_31g67"]
+[ext_resource type="StyleBox" uid="uid://bj3doko4cb1aa" path="res://assets/colores/gris.tres" id="4_4vcky"]
+[ext_resource type="FontFile" uid="uid://8kka5ggm4wpk" path="res://assets/Righteous-Regular.ttf" id="5_dicpl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxtml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6fle"]
+
+[resource]
+default_font = ExtResource("5_dicpl")
+Button/colors/font_color = Color(0.968627, 0.996078, 1, 1)
+Button/colors/font_disabled_color = Color(0.968627, 0.996078, 1, 1)
+Button/styles/disabled = ExtResource("4_4vcky")
+Button/styles/hover = ExtResource("2_pyss0")
+Button/styles/normal = ExtResource("3_31g67")
+Button/styles/pressed = SubResource("StyleBoxFlat_hxtml")
+CheckButton/colors/font_color = Color(0.466667, 0.701961, 0.996078, 1)
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_v6fle")
+CheckButton/styles/normal = ExtResource("1_wd4oj")
+CheckButton/styles/pressed = ExtResource("1_wd4oj")
+HSeparator/constants/separation = 60
+HSeparator/styles/separator = ExtResource("4_4vcky")
+HSlider/icons/grabber = null
+HSlider/styles/grabber_area = ExtResource("2_pyss0")
+HSlider/styles/grabber_area_highlight = ExtResource("4_4vcky")
+Label/colors/font_color = Color(0.466667, 0.701961, 0.996078, 1)
+Label/fonts/font = ExtResource("5_dicpl")

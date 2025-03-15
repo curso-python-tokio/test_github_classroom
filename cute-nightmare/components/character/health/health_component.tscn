@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4x8gmciuxjrf"]
+
+[ext_resource type="Script" uid="uid://c3g2ewc578rdc" path="res://components/character/health/health_component.gd" id="1_y24gt"]
+[ext_resource type="PackedScene" uid="uid://dfjny6iqlooj2" path="res://src/atoms/label/debug_label.tscn" id="2_4vhjm"]
+
+[node name="HealthComponent" type="Node3D"]
+script = ExtResource("1_y24gt")
+
+[node name="debugLabel" parent="." instance=ExtResource("2_4vhjm")]
+modulate = Color(1, 0, 0, 1)

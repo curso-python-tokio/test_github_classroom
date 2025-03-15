@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnbe664q3m87l"]
+
+[ext_resource type="Material" uid="uid://cblhockc07ll2" path="res://addons/kenney_prototype_tools/materials/orange/material_06.tres" id="1_kkghi"]
+[ext_resource type="Script" uid="uid://daf6omn5rmfgd" path="res://src/organisms/flashlight/flashlight.gd" id="1_nv5lu"]
+[ext_resource type="PackedScene" uid="uid://dfjny6iqlooj2" path="res://src/atoms/label/debug_label.tscn" id="3_xp3id"]
+
+[node name="Flashlight" type="Node3D"]
+script = ExtResource("1_nv5lu")
+max_battery = 20
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+radius = 0.05
+height = 0.2
+material = ExtResource("1_kkghi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+spot_range = 10.416
+spot_attenuation = -2.16
+spot_angle = 22.38
+
+[node name="debugLabel" parent="." instance=ExtResource("3_xp3id")]
+transform = Transform3D(1.28558, 0, 1.53209, 0, 2, 0, -1.53209, 0, 1.28558, 0, 0, 0)
+modulate = Color(0.891175, 0.977995, 0, 1)

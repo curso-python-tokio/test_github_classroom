@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dry4m4cnmvhhw"]
+
+[ext_resource type="Script" uid="uid://c4c87oyabexln" path="res://components/character/stamina/stamina_component.gd" id="1_ac0mx"]
+[ext_resource type="PackedScene" uid="uid://dfjny6iqlooj2" path="res://src/atoms/label/debug_label.tscn" id="2_m5iov"]
+
+[node name="StaminaComponent" type="Node3D"]
+script = ExtResource("1_ac0mx")
+
+[node name="debugLabel" parent="." instance=ExtResource("2_m5iov")]
+transform = Transform3D(1.00283, 0, 0, 0, 1.00283, 0, 0, 0, 1.00283, 0, 0, 0)
+modulate = Color(0.440238, 0.50642, 1, 1)

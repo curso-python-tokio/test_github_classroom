@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7utrw7qklrk"]
+
+[ext_resource type="PackedScene" uid="uid://bv671vebe7636" path="res://src/organisms/enemies/basic_1/basic_1.blend" id="1_voxfu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_voxfu"]
+
+[node name="basic_1" instance=ExtResource("1_voxfu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.976108, 0)
+shape = SubResource("CapsuleShape3D_voxfu")

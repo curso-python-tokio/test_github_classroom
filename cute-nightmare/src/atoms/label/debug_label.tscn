@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfjny6iqlooj2"]
+
+[ext_resource type="Script" uid="uid://cvvtoi8qb25g4" path="res://src/atoms/label/debug_label.gd" id="1_1masu"]
+
+[node name="debugLabel" type="Label3D"]
+text = "value not found"
+script = ExtResource("1_1masu")

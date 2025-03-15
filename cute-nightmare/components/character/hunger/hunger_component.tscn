@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvrgarrek3f56"]
+
+[ext_resource type="Script" uid="uid://dwmg3gfj4to81" path="res://components/character/hunger/hunger_component.gd" id="1_ff62f"]
+[ext_resource type="PackedScene" uid="uid://dfjny6iqlooj2" path="res://src/atoms/label/debug_label.tscn" id="2_yniea"]
+
+[node name="HungerComponent" type="Node3D"]
+script = ExtResource("1_ff62f")
+
+[node name="debugLabel" parent="." instance=ExtResource("2_yniea")]
+transform = Transform3D(0.998207, 0, 0, 0, 1.09615, 0, 0, 0, 1, 0, 0, 0)
+modulate = Color(1, 0.949333, 0.24, 1)
