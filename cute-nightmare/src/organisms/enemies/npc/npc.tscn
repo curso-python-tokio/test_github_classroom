@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/field_of_view_component.gd" id="1_6hq3w"]
 [ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/raycasting_component.gd" id="2_tedad"]
 [ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/pixel_light_detector.gd" id="4_16v5g"]
-[ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/vision_system.gd" id="4_k0lmj"]
+[ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/target_recognition_component.gd" id="4_k0lmj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedad"]
 albedo_color = Color(0.696667, 0.3, 1, 1)
