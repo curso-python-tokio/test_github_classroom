@@ -173,7 +173,7 @@ func _on_recognition_state_changed(target: Node3D, _old_state: Dictionary, new_s
 # Public API methods
 
 ## Remember a target with its current position
-func remember_target(target: Node3D, position: Vector3, _is_visible: bool = true) -> void:
+func remember_target(target: Node3D, target_position: Vector3, _is_visible: bool = true) -> void:
 	if not is_instance_valid(target):
 		return
 		
@@ -191,9 +191,9 @@ func remember_target(target: Node3D, position: Vector3, _is_visible: bool = true
 			memory.visible = true
 			
 			# Update position if changed significantly
-			var distance = memory.position.distance_to(position)
+			var distance = memory.position.distance_to(target_position)
 			if distance > position_update_threshold:
-				memory.position = position
+				memory.position = target_position
 				
 				if debug_enabled:
 					print_debug("Target position updated: %s | New position: %s" % [target.name, position])
@@ -204,7 +204,7 @@ func remember_target(target: Node3D, position: Vector3, _is_visible: bool = true
 		# Create new memory
 		var memory_data = {
 			"target": target,
-			"position": position,
+			"position": target_position,
 			"last_seen_time": current_time,
 			"confidence": initial_memory_confidence,
 			"visible": _is_visible,
@@ -214,13 +214,13 @@ func remember_target(target: Node3D, position: Vector3, _is_visible: bool = true
 		_memories[instance_id] = memory_data
 		
 		if debug_enabled:
-			print_debug("New target remembered: %s | Position: %s" % [target.name, position])
+			print_debug("New target remembered: %s | Position: %s" % [target.name, target_position])
 	
 	# Emit signal
 	target_remembered.emit(target, _memories[instance_id].duplicate())
 
 ## Refresh memory of a target (mark as seen now)
-func _refresh_memory(instance_id: int, target: Node3D, position: Vector3) -> void:
+func _refresh_memory(instance_id: int, target: Node3D, target_position: Vector3) -> void:
 	if not _memories.has(instance_id) or not is_instance_valid(target):
 		return
 		
@@ -234,9 +234,9 @@ func _refresh_memory(instance_id: int, target: Node3D, position: Vector3) -> voi
 		_memories[instance_id].position = target.global_position
 	else:
 		# Only update if position was provided and significantly different
-		var distance = _memories[instance_id].position.distance_to(position)
+		var distance = _memories[instance_id].position.distance_to(target_position)
 		if distance > position_update_threshold:
-			_memories[instance_id].position = position
+			_memories[instance_id].position = target_position
 
 ## Mark a target as no longer visible
 func mark_target_not_visible(target: Node3D) -> void:
