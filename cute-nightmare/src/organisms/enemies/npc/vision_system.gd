@@ -176,15 +176,15 @@ func _on_illumination_changed(_is_lit: bool, intensity: float) -> void:
 			print_debug("VisionSystem: Light level changed: ", old_level, " -> ", intensity)
 
 func _on_target_recognized(target: Node3D, confidence: float) -> void:
-	var position = Vector3.ZERO
+	var target_position = Vector3.ZERO
 	
 	if target_recognition:
 		var state = target_recognition.get_recognition_state(target)
 		if state.has("position"):
-			position = state.position
+			target_position = state.position
 	
 	# Re-emitir la señal con posición incluida
-	target_detected.emit(target, position)
+	target_detected.emit(target, target_position)
 	
 	if debug_enabled:
 		print_debug("VisionSystem: Target detected: ", target.name, " (confidence: ", confidence, ")")
