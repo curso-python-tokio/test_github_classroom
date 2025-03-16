@@ -49,10 +49,10 @@ func is_target_visible(target: Node3D) -> bool:
 	var result := _space_state.intersect_ray(query)
 	
 	# Target is visible if there's no collision or the collision is with the target itself
-	var is_visible: bool = result.is_empty() or result.collider == target
+	var target_is_visible: bool = result.is_empty() or result.collider == target
 	var instance_id: int = target.get_instance_id()
 	
-	if is_visible:
+	if target_is_visible:
 		if not _visible_targets.has(instance_id):
 			var target_data = {
 				"object": target,
@@ -76,7 +76,7 @@ func is_target_visible(target: Node3D) -> bool:
 		if debug_enabled && Global.debug:
 			print_debug("Target lost visibility: %s" % target.name)
 	
-	return is_visible
+	return target_is_visible
 
 func check_visibility_for_targets(targets: Array) -> void:
 	for target_data in targets:
