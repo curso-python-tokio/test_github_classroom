@@ -43,3 +43,6 @@ func heal(amount: int):
 
 func reset_health():
 	current_health = max_health
+
+func get_label():
+	return label

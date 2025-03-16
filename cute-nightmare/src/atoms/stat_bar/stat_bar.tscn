@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4bc804yqdwg"]
+
+[ext_resource type="Script" uid="uid://hjue2dvchr7o" path="res://src/atoms/stat_bar/texture_progress_bar.gd" id="1_6dmgx"]
+[ext_resource type="Texture2D" uid="uid://dg8p6g1bvowoc" path="res://assets/UI/bars/stat_bars_fondo.png" id="1_advvf"]
+
+[node name="StatBar" type="TextureProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1030.0
+offset_bottom = -710.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("1_advvf")
+tint_over = Color(1, 1, 1, 0)
+script = ExtResource("1_6dmgx")

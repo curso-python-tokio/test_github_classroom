@@ -41,3 +41,6 @@ func recover_stamina(amount: int):
 
 func reset_stamina():
 	current_stamina = max_stamina
+	
+func get_label():
+	return label

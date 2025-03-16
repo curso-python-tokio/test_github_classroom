@@ -71,3 +71,6 @@ func _apply_thirst_damage():
 		health_component.take_damage(thirst_damage)
 	else:
 		push_warning("HealthComponent no asignado en ThirstComponent.")
+
+func get_label():
+	return label

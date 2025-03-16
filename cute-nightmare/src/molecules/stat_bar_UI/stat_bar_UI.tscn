@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://dklrapguoe5lr"]
+
+[ext_resource type="PackedScene" uid="uid://ck4bc804yqdwg" path="res://src/atoms/stat_bar/stat_bar.tscn" id="1_h2gac"]
+[ext_resource type="Script" uid="uid://dhf4x0uhci7yx" path="res://src/molecules/stat_bar_UI/stat_bar_ui.gd" id="1_mfumu"]
+[ext_resource type="Theme" uid="uid://dfm5x5wpude3u" path="res://assets/CN_theme.tres" id="3_4um7r"]
+[ext_resource type="Texture2D" uid="uid://dg8p6g1bvowoc" path="res://assets/UI/bars/stat_bars_fondo.png" id="3_j0yjv"]
+[ext_resource type="Texture2D" uid="uid://1vs4unn8768k" path="res://assets/UI/icons/basic/heart/heart.png" id="5_wkxlr"]
+[ext_resource type="Texture2D" uid="uid://dlvenbffrxjwl" path="res://assets/UI/icons/basic/stamina/stamina.png" id="6_lmlnd"]
+[ext_resource type="Texture2D" uid="uid://bn7e1m4q1oygm" path="res://assets/UI/icons/basic/food/food.png" id="7_hhsug"]
+[ext_resource type="Texture2D" uid="uid://c8dagv3jqcs75" path="res://assets/UI/icons/basic/water/water.png" id="8_5lqih"]
+[ext_resource type="Texture2D" uid="uid://h20p2u5vl6o6" path="res://assets/UI/icons/basic/battery/battery.png" id="9_g5ldo"]
+
+[node name="StatBarsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mfumu")
+
+[node name="VBoxLeft2" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 268.0
+offset_bottom = 76.0
+theme_override_constants/separation = 22
+
+[node name="HealthBar" parent="VBoxLeft2" instance=ExtResource("1_h2gac")]
+layout_mode = 2
+theme = ExtResource("3_4um7r")
+value = 60.0
+texture_over = ExtResource("3_j0yjv")
+texture_progress = ExtResource("3_j0yjv")
+tint_progress = Color(0.996078, 0.592157, 0.823529, 1)
+stat_name = "Health"
+show_label = false
+
+[node name="StaminaBar" parent="VBoxLeft2" instance=ExtResource("1_h2gac")]
+layout_mode = 2
+value = 20.0
+rounded = true
+texture_over = ExtResource("3_j0yjv")
+texture_progress = ExtResource("3_j0yjv")
+tint_over = Color(0.466667, 0.701961, 0.996078, 0)
+tint_progress = Color(0.466667, 0.701961, 0.996078, 1)
+stat_name = "Stamina"
+show_label = false
+
+[node name="VBoxLeft" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 1028.0
+scale = Vector2(0.07, 0.07)
+
+[node name="HeartIcon" type="TextureRect" parent="VBoxLeft"]
+layout_mode = 2
+texture = ExtResource("5_wkxlr")
+
+[node name="StaminaIcon" type="TextureRect" parent="VBoxLeft"]
+layout_mode = 2
+texture = ExtResource("6_lmlnd")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="VBoxRight" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 983.0
+offset_top = 21.0
+offset_right = 1233.0
+offset_bottom = 111.0
+theme_override_constants/separation = 22
+
+[node name="HungerBar" parent="VBoxRight" instance=ExtResource("1_h2gac")]
+layout_mode = 2
+theme = ExtResource("3_4um7r")
+value = 60.0
+fill_mode = 1
+texture_over = ExtResource("3_j0yjv")
+texture_progress = ExtResource("3_j0yjv")
+tint_progress = Color(0.960784, 0.607843, 0.0784314, 1)
+stat_name = "Health"
+show_label = false
+
+[node name="ThirstBar" parent="VBoxRight" instance=ExtResource("1_h2gac")]
+layout_mode = 2
+theme = ExtResource("3_4um7r")
+value = 60.0
+fill_mode = 1
+texture_over = ExtResource("3_j0yjv")
+texture_progress = ExtResource("3_j0yjv")
+tint_progress = Color(0.654902, 0.94902, 1, 1)
+stat_name = "Health"
+show_label = false
+
+[node name="BatteryBar" parent="VBoxRight" instance=ExtResource("1_h2gac")]
+layout_mode = 2
+theme = ExtResource("3_4um7r")
+value = 60.0
+fill_mode = 1
+texture_over = ExtResource("3_j0yjv")
+texture_progress = ExtResource("3_j0yjv")
+tint_progress = Color(0.588235, 0.941176, 0.431373, 1)
+stat_name = "Health"
+show_label = false
+
+[node name="VBoxRight2" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1220.0
+offset_top = 4.0
+offset_right = 1732.0
+offset_bottom = 1548.0
+scale = Vector2(0.07, 0.07)
+
+[node name="HungerIcon" type="TextureRect" parent="VBoxRight2"]
+layout_mode = 2
+texture = ExtResource("7_hhsug")
+
+[node name="ThirstIcon" type="TextureRect" parent="VBoxRight2"]
+layout_mode = 2
+texture = ExtResource("8_5lqih")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="BatteryIcon" type="TextureRect" parent="VBoxRight2"]
+layout_mode = 2
+texture = ExtResource("9_g5ldo")
+expand_mode = 5
+stretch_mode = 5

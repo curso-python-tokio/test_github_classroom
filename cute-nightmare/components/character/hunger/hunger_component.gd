@@ -71,3 +71,6 @@ func _apply_hunger_damage():
 		health_component.take_damage(hunger_damage)
 	else:
 		push_warning("HealthComponent no asignado en HungerComponent.")
+
+func get_label():
+	return label

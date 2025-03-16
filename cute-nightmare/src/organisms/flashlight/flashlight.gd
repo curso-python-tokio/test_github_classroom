@@ -88,3 +88,6 @@ func get_battery_percent() -> float:
 
 func has_low_battery() -> bool:
 	return current_battery <= low_battery_threshold
+
+func get_label():
+	return label
