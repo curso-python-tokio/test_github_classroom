@@ -185,7 +185,7 @@ func _sample_light(pos_key: String) -> void:
 	var pixel_y = int(screen_pos.y)
 	
 	# Calculate half-size (for ROI of 3, half_size is 1)
-	var half_size = roi_size / 2
+	var half_size = float(roi_size) / 2.0
 	
 	# Create ROI rect
 	var roi_rect = Rect2i(
