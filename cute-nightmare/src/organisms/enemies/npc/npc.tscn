@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc8ebavmsl118"]
+[gd_scene load_steps=14 format=3 uid="uid://dc8ebavmsl118"]
 
-[ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/field_of_view_component.gd" id="1_6hq3w"]
-[ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/raycasting_component.gd" id="2_tedad"]
-[ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/pixel_light_detector.gd" id="4_16v5g"]
-[ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/target_recognition_component.gd" id="4_k0lmj"]
-[ext_resource type="Script" uid="uid://dbn04226ybwnh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/memory_vision_component.gd" id="5_k0lmj"]
+[ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/vision_system/field_of_view_component.gd" id="1_6hq3w"]
+[ext_resource type="Script" uid="uid://c41jqx3318kyo" path="res://src/organisms/enemies/npc/vision_system.gd" id="1_n0ker"]
+[ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/vision_system/target_recognition_component.gd" id="2_10n1b"]
+[ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/vision_system/raycasting_component.gd" id="2_tedad"]
+[ext_resource type="Script" uid="uid://b85wnym0fyk5v" path="res://src/organisms/enemies/npc/BRAIN/vision_system/eye_damage_controller.gd" id="3_a740e"]
+[ext_resource type="Script" uid="uid://cqdjyy7xxeemc" path="res://src/organisms/enemies/npc/BRAIN/vision_system/blink_controller.gd" id="3_n0ker"]
+[ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/vision_system/pixel_light_detector.gd" id="4_16v5g"]
+[ext_resource type="Script" uid="uid://dbn04226ybwnh" path="res://src/organisms/enemies/npc/BRAIN/vision_system/memory_vision_component.gd" id="5_k0lmj"]
+[ext_resource type="Script" uid="uid://crxkqs7w05ldu" path="res://src/organisms/enemies/npc/BRAIN/vision_system/vision_state_manager.gd" id="7_5rb8o"]
+[ext_resource type="Script" uid="uid://gpp3fh85k87c" path="res://src/organisms/enemies/npc/BRAIN/vision_system/vision_perception_modifier.gd" id="9_sgchq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedad"]
 albedo_color = Color(0.696667, 0.3, 1, 1)
@@ -23,10 +28,33 @@ shape = SubResource("BoxShape3D_tedad")
 
 [node name="BRAIN" type="Node3D" parent="."]
 
-[node name="VisionSystem" type="Node3D" parent="BRAIN"]
+[node name="VisionSystem" type="Node3D" parent="BRAIN" node_paths=PackedStringArray("state_manager", "blink_controller", "eye_damage_controller", "fov_component", "raycast_component", "light_detector", "target_recognition", "memory_vision", "perception_modifier")]
+script = ExtResource("1_n0ker")
+state_manager = NodePath("VisionStateManager")
+blink_controller = NodePath("BlinkController")
+eye_damage_controller = NodePath("EyeDamageController")
+fov_component = NodePath("TargetRecognitionComponent/FieldOfViewComponent")
+raycast_component = NodePath("TargetRecognitionComponent/RaycastComponet")
+light_detector = NodePath("TargetRecognitionComponent/PixelLightDetector")
+target_recognition = NodePath("TargetRecognitionComponent")
+memory_vision = NodePath("MemoryVisionComponent")
+perception_modifier = NodePath("VisionPerceptionModifier")
+debug_enabled = true
+
+[node name="VisionStateManager" type="Node3D" parent="BRAIN/VisionSystem"]
+script = ExtResource("7_5rb8o")
+
+[node name="VisionPerceptionModifier" type="Node3D" parent="BRAIN/VisionSystem"]
+script = ExtResource("9_sgchq")
+
+[node name="EyeDamageController" type="Node3D" parent="BRAIN/VisionSystem"]
+script = ExtResource("3_a740e")
+
+[node name="BlinkController" type="Node3D" parent="BRAIN/VisionSystem"]
+script = ExtResource("3_n0ker")
 
 [node name="TargetRecognitionComponent" type="Node3D" parent="BRAIN/VisionSystem" node_paths=PackedStringArray("fov_component", "raycast_component", "light_detector")]
-script = ExtResource("4_k0lmj")
+script = ExtResource("2_10n1b")
 fov_component = NodePath("FieldOfViewComponent")
 raycast_component = NodePath("RaycastComponet")
 light_detector = NodePath("PixelLightDetector")
@@ -50,4 +78,3 @@ script = ExtResource("2_tedad")
 [node name="MemoryVisionComponent" type="Node3D" parent="BRAIN/VisionSystem" node_paths=PackedStringArray("target_recognition")]
 script = ExtResource("5_k0lmj")
 target_recognition = NodePath("../TargetRecognitionComponent")
-debug_enabled = true

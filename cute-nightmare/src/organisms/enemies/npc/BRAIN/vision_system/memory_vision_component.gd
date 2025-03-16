@@ -173,7 +173,7 @@ func _on_recognition_state_changed(target: Node3D, old_state: Dictionary, new_st
 # Public API methods
 
 ## Remember a target with its current position
-func remember_target(target: Node3D, position: Vector3, is_visible: bool = true) -> void:
+func remember_target(target: Node3D, position: Vector3, _is_visible: bool = true) -> void:
 	if not is_instance_valid(target):
 		return
 		
@@ -185,7 +185,7 @@ func remember_target(target: Node3D, position: Vector3, is_visible: bool = true)
 		var memory = _memories[instance_id]
 		
 		# If currently visible, refresh memory
-		if is_visible:
+		if _is_visible:
 			memory.last_seen_time = current_time
 			memory.confidence = initial_memory_confidence
 			memory.visible = true
@@ -207,7 +207,7 @@ func remember_target(target: Node3D, position: Vector3, is_visible: bool = true)
 			"position": position,
 			"last_seen_time": current_time,
 			"confidence": initial_memory_confidence,
-			"visible": is_visible,
+			"visible": _is_visible,
 			"tags": {}  # For additional metadata
 		}
 		
