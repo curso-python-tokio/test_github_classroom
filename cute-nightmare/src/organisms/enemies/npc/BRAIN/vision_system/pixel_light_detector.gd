@@ -261,7 +261,7 @@ func _exit_tree() -> void:
 		_detectors.remove_at(idx)
 
 # Process all detectors efficiently
-static func process_all_detectors(scene_tree: SceneTree) -> void:
+static func process_all_detectors(_scene_tree: SceneTree) -> void:
 	# Process by batch (1/4 each frame)
 	var frame_id = Engine.get_frames_drawn()
 	var batch_index = frame_id % 4

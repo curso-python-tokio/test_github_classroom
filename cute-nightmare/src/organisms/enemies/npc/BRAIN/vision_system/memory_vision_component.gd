@@ -125,7 +125,7 @@ func _forget_target(target: Node3D) -> void:
 
 # TargetRecognitionComponent signal handlers
 
-func _on_target_recognized(target: Node3D, confidence: float) -> void:
+func _on_target_recognized(target: Node3D, _confidence: float) -> void:
 	if not is_instance_valid(target):
 		return
 		
@@ -154,7 +154,7 @@ func _on_target_lost(target: Node3D) -> void:
 	if debug_enabled:
 		print_debug("Target lost but still remembered: %s" % target.name)
 
-func _on_recognition_state_changed(target: Node3D, old_state: Dictionary, new_state: Dictionary) -> void:
+func _on_recognition_state_changed(target: Node3D, _old_state: Dictionary, new_state: Dictionary) -> void:
 	if not is_instance_valid(target):
 		return
 		

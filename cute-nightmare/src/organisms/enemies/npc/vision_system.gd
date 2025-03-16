@@ -163,7 +163,7 @@ func _on_blink_ended() -> void:
 	if debug_enabled:
 		print_debug("VisionSystem: Blink ended")
 
-func _on_illumination_changed(is_lit: bool, intensity: float) -> void:
+func _on_illumination_changed(_is_lit: bool, intensity: float) -> void:
 	if auto_manage_light_states and state_manager:
 		# Gestionar transiciones de estado basadas en niveles de luz
 		var current_light_level = light_detector.get_light_intensity()

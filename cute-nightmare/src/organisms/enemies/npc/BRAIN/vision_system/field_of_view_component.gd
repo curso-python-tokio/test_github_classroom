@@ -24,7 +24,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if debug_enabled && Global.debug:
 		_update_debug_info()
 
