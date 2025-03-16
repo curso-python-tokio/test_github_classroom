@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc8ebavmsl118"]
+[gd_scene load_steps=8 format=3 uid="uid://dc8ebavmsl118"]
 
 [ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/field_of_view_component.gd" id="1_6hq3w"]
 [ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/raycasting_component.gd" id="2_tedad"]
 [ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/pixel_light_detector.gd" id="4_16v5g"]
+[ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/vision_system.gd" id="4_k0lmj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedad"]
 albedo_color = Color(0.696667, 0.3, 1, 1)
@@ -23,18 +24,25 @@ shape = SubResource("BoxShape3D_tedad")
 
 [node name="VisionSystem" type="Node3D" parent="BRAIN"]
 
-[node name="PixelLightDetector" type="Node3D" parent="BRAIN/VisionSystem"]
+[node name="TargetRecognitionComponent" type="Node3D" parent="BRAIN/VisionSystem" node_paths=PackedStringArray("fov_component", "raycast_component", "light_detector")]
+script = ExtResource("4_k0lmj")
+fov_component = NodePath("FieldOfViewComponent")
+raycast_component = NodePath("RaycastComponet")
+light_detector = NodePath("PixelLightDetector")
+debug_enabled = true
+
+[node name="PixelLightDetector" type="Node3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097597, -0.0193708, 0)
 script = ExtResource("4_16v5g")
 
-[node name="FieldOfViewComponent" type="Area3D" parent="BRAIN/VisionSystem"]
+[node name="FieldOfViewComponent" type="Area3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457086, 0, 0)
 script = ExtResource("1_6hq3w")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BRAIN/VisionSystem/FieldOfViewComponent"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent/FieldOfViewComponent"]
 transform = Transform3D(-4.37114e-08, 4.24001, -4.37114e-08, 0, -1.85337e-07, -1, -1, -1.85337e-07, 1.91069e-15, -4.06985, 0.0171547, 0)
 shape = SubResource("CylinderShape3D_tedad")
 debug_color = Color(0.955629, 2.40654e-06, 0.542208, 0.42)
 
-[node name="RaycastComponet" type="Node3D" parent="BRAIN/VisionSystem"]
+[node name="RaycastComponet" type="Node3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent"]
 script = ExtResource("2_tedad")
