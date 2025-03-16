@@ -209,11 +209,11 @@ func _on_fov_target_lost(target: Node3D) -> void:
 	if _target_states.has(instance_id):
 		_target_states[instance_id].in_fov = false
 
-func _on_fov_target_updated(target: Node3D, position: Vector3) -> void:
+func _on_fov_target_updated(target: Node3D, target_position: Vector3) -> void:
 	var instance_id = target.get_instance_id()
 	
 	if _target_states.has(instance_id):
-		_target_states[instance_id].position = position
+		_target_states[instance_id].position = target_position
 
 func _on_illumination_changed(is_lit: bool, intensity: float) -> void:
 	# Apply illumination state to all targets
