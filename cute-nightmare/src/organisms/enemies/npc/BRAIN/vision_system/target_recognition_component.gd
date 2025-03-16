@@ -180,7 +180,7 @@ func _state_changed(old_state: Dictionary, new_state: Dictionary) -> bool:
 		abs(old_state.confidence - new_state.confidence) > 0.05
 	)
 
-func _on_fov_target_detected(target: Node3D, position: Vector3) -> void:
+func _on_fov_target_detected(target: Node3D, target_position: Vector3) -> void:
 	var instance_id = target.get_instance_id()
 	
 	# Initialize target state if not already tracked
@@ -192,7 +192,7 @@ func _on_fov_target_detected(target: Node3D, position: Vector3) -> void:
 			"illuminated": false,
 			"light_level": 0.0,
 			"confidence": 0.0,
-			"position": position
+			"position": target_position
 		}
 		
 		# Immediately check visibility
@@ -201,7 +201,7 @@ func _on_fov_target_detected(target: Node3D, position: Vector3) -> void:
 	else:
 		# Update FOV state
 		_target_states[instance_id].in_fov = true
-		_target_states[instance_id].position = position
+		_target_states[instance_id].position = target_position
 
 func _on_fov_target_lost(target: Node3D) -> void:
 	var instance_id = target.get_instance_id()
