@@ -26,7 +26,6 @@ shape = SubResource("BoxShape3D_tedad")
 [node name="PixelLightDetector" type="Node3D" parent="BRAIN/VisionSystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097597, -0.0193708, 0)
 script = ExtResource("4_16v5g")
-debug_enabled = true
 
 [node name="FieldOfViewComponent" type="Area3D" parent="BRAIN/VisionSystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457086, 0, 0)

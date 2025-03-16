@@ -1,9 +1,13 @@
 extends Area3D
-class_name Area3DPowerUpDetector
+class_name PowerUpDetector
 
 # Configuración
 @export var power_up_mask: int = 2  # Capa 2 por defecto para power-ups
 @onready var detection_shape: CollisionShape3D = $CollisionShape3D
+
+@export_group("Debug", "debug_")
+## Show debug information
+@export var debug_enabled: bool = false
 
 # Señales
 signal power_up_collected(power_up: Node)
@@ -32,22 +36,22 @@ func _create_default_collision_shape():
 
 func _on_body_entered(body: Node):
 	_handle_power_up(body, true)
-	if Global.debug:
+	if Global.debug and debug_enabled:
 		print("Player Power Up: body entered")
 
 func _on_area_entered(area: Area3D):
 	_handle_power_up(area, true)
-	if Global.debug:
+	if Global.debug and debug_enabled:
 		print("Player Power Up: area entered")
 
 func _on_body_exited(body: Node):
 	_handle_power_up(body, false)
-	if Global.debug:
+	if Global.debug and debug_enabled:
 		print("Player Power Up: body exited")
 		
 func _on_area_exited(area: Area3D):
 	_handle_power_up(area, false)
-	if Global.debug:
+	if Global.debug and debug_enabled:
 		print("Player Power Up: area exited")
 		
 func _handle_power_up(node: Node, entered: bool):

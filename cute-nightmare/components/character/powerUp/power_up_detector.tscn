@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccqitb7p8uhpm"]
 
-[ext_resource type="Script" uid="uid://bybyjlcgkvaxs" path="res://components/character/powerUp/area_3d_dectector.gd" id="1_3syd2"]
+[ext_resource type="Script" uid="uid://bybyjlcgkvaxs" path="res://components/character/powerUp/power_up_detector.gd" id="1_3syd2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_psrkm"]
 
