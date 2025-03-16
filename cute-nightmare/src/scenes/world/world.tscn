@@ -41,7 +41,7 @@ navigation_mesh = SubResource("NavigationMesh_cacf4")
 [node name="PrototypeLevel" parent="NavigationRegion3D" instance=ExtResource("1_q3of6")]
 
 [node name="CSGBox3D" parent="NavigationRegion3D/PrototypeLevel" index="2"]
-transform = Transform3D(-1.16784e-08, 0, 11.0897, 0, 2.1767, 0, -0.267171, 0, -4.84748e-07, -11.814, 5.77071, 5)
+transform = Transform3D(-1.16784e-08, 0, 11.0897, 0, 2.1767, 0, -0.267171, 0, -4.84748e-07, -11.814, 5.77071, 8.11785)
 
 [node name="NPC" parent="." instance=ExtResource("4_kccwn")]
 transform = Transform3D(0.0632783, 0, 0.997996, 0, 1, 0, -0.997996, 0, 0.0632783, -11.4273, -0.487046, 1.86343)

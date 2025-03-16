@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc8ebavmsl118"]
+[gd_scene load_steps=9 format=3 uid="uid://dc8ebavmsl118"]
 
 [ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/field_of_view_component.gd" id="1_6hq3w"]
 [ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/raycasting_component.gd" id="2_tedad"]
 [ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/pixel_light_detector.gd" id="4_16v5g"]
 [ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/target_recognition_component.gd" id="4_k0lmj"]
+[ext_resource type="Script" uid="uid://dbn04226ybwnh" path="res://src/organisms/enemies/npc/BRAIN/VisionSystem/memory_vision_component.gd" id="5_k0lmj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedad"]
 albedo_color = Color(0.696667, 0.3, 1, 1)
@@ -29,7 +30,6 @@ script = ExtResource("4_k0lmj")
 fov_component = NodePath("FieldOfViewComponent")
 raycast_component = NodePath("RaycastComponet")
 light_detector = NodePath("PixelLightDetector")
-debug_enabled = true
 
 [node name="PixelLightDetector" type="Node3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097597, -0.0193708, 0)
@@ -46,3 +46,8 @@ debug_color = Color(0.955629, 2.40654e-06, 0.542208, 0.42)
 
 [node name="RaycastComponet" type="Node3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent"]
 script = ExtResource("2_tedad")
+
+[node name="MemoryVisionComponent" type="Node3D" parent="BRAIN/VisionSystem" node_paths=PackedStringArray("target_recognition")]
+script = ExtResource("5_k0lmj")
+target_recognition = NodePath("../TargetRecognitionComponent")
+debug_enabled = true
