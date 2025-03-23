@@ -18,8 +18,8 @@ background_mode = 2
 sky = SubResource("Sky_giqlu")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cacf4"]
-vertices = PackedVector3Array(-22.5, 5.5, 6, -1.1, 5.5, 6, 0, 5.5, 3.2, 3, 5.5, 1.9, 3, 5.5, -22.5, -22.5, 5.5, -22.5, 5.8, 5.5, 3, 7.1, 5.5, 6, 22.5, 5.5, 6, 22.5, 5.5, -22.5, 0, 8.25, 5.8, 0, 8.25, 6.2, 0.800001, 8.25, 8.1, 2.8, 8.25, 9, 3.2, 8.25, 9, 5.1, 8.25, 8.2, 6, 8.25, 6.2, 6, 8.25, 5.8, 5.2, 8.25, 3.9, 3.2, 8.25, 3, 2.8, 8.25, 3, 0.9, 8.25, 3.8, 3, 5.5, 22.5, 3, 5.5, 10.1, 0, 5.5, 8.8, -22.5, 5.5, 22.5, 5.8, 5.5, 9, 22.5, 5.5, 22.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 3, 8), PackedInt32Array(8, 3, 4), PackedInt32Array(8, 4, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(15, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 10), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 12), PackedInt32Array(16, 12, 10), PackedInt32Array(16, 10, 19), PackedInt32Array(24, 23, 22), PackedInt32Array(24, 22, 1), PackedInt32Array(1, 22, 0), PackedInt32Array(0, 22, 25), PackedInt32Array(22, 23, 26), PackedInt32Array(26, 7, 22), PackedInt32Array(22, 7, 8), PackedInt32Array(22, 8, 27)]
+vertices = PackedVector3Array(-22.5, 5.5, 8.1, -17.9, 5.5, 8.1, -17.8, 5.5, 7.6, -17.5, 5.5, 7.4, -6, 5.5, 7.5, -1, 5.5, 6.3, -1.1, 5.5, 5.8, 0, 5.5, 3.2, 3, 5.5, 1.9, 3, 5.5, -22.5, -22.5, 5.5, -22.5, 5.8, 5.5, 3, 7.1, 5.5, 6, 22.5, 5.5, 6, 22.5, 5.5, -22.5, 0, 11, 5.8, 0, 11, 6.2, 0.800001, 11, 8.1, 2.8, 11, 9, 3.2, 11, 9, 5.1, 11, 8.2, 6, 11, 6.2, 6, 11, 5.8, 5.2, 11, 3.9, 3.2, 11, 3, 2.8, 11, 3, 0.9, 11, 3.8, 5.8, 5.5, 9, 3, 5.5, 10.1, 3, 5.5, 22.5, 22.5, 5.5, 22.5, -5.8, 5.5, 7.6, -5.7, 5.5, 8.1, -0.299999, 5.5, 8.1, -17.8, 5.5, 8.6, -17.5, 5.5, 8.8, -22.5, 5.5, 22.5, -6.6, 5.5, 22.5, -6.7, 5.5, 8.8, -5.9, 5.5, 8.7, 0.200001, 5.5, 9)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 0), PackedInt32Array(6, 5, 4), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 3), PackedInt32Array(7, 3, 8), PackedInt32Array(8, 3, 0), PackedInt32Array(8, 0, 9), PackedInt32Array(9, 0, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(11, 8, 13), PackedInt32Array(13, 8, 9), PackedInt32Array(13, 9, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 15), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 17), PackedInt32Array(21, 17, 15), PackedInt32Array(21, 15, 24), PackedInt32Array(29, 28, 27), PackedInt32Array(27, 12, 29), PackedInt32Array(29, 12, 13), PackedInt32Array(29, 13, 30), PackedInt32Array(31, 4, 5), PackedInt32Array(31, 5, 32), PackedInt32Array(32, 5, 33), PackedInt32Array(0, 1, 34), PackedInt32Array(34, 35, 0), PackedInt32Array(0, 35, 36), PackedInt32Array(38, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(32, 33, 39), PackedInt32Array(39, 33, 40), PackedInt32Array(39, 40, 38), PackedInt32Array(38, 40, 28), PackedInt32Array(38, 28, 29), PackedInt32Array(38, 29, 37)]
 cell_size = 0.1
 agent_height = 2.0
 
@@ -29,7 +29,7 @@ agent_height = 2.0
 environment = SubResource("Environment_bbqit")
 
 [node name="Player" parent="." instance=ExtResource("2_cacf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73781, 6.17564, 12.0125)
 
 [node name="Box" parent="." instance=ExtResource("3_cacf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76119, -0.581874, 8.82985)
@@ -40,10 +40,13 @@ navigation_mesh = SubResource("NavigationMesh_cacf4")
 
 [node name="PrototypeLevel" parent="NavigationRegion3D" instance=ExtResource("1_q3of6")]
 
+[node name="CSGCylinder3D" parent="NavigationRegion3D/PrototypeLevel" index="1"]
+height = 9.118
+
 [node name="CSGBox3D" parent="NavigationRegion3D/PrototypeLevel" index="2"]
 transform = Transform3D(-1.16784e-08, 0, 11.0897, 0, 2.1767, 0, -0.267171, 0, -4.84748e-07, -11.814, 5.77071, 8.11785)
 
 [node name="NPC" parent="." instance=ExtResource("4_kccwn")]
-transform = Transform3D(0.0632783, 0, 0.997996, 0, 1, 0, -0.997996, 0, 0.0632783, -11.4273, -0.487046, 1.86343)
+transform = Transform3D(0.0632783, 0, 0.997996, 0, 1, 0, -0.997996, 0, 0.0632783, -12.184, 0.653734, -0.0969434)
 
 [editable path="NavigationRegion3D/PrototypeLevel"]

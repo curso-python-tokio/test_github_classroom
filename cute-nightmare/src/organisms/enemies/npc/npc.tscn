@@ -1,15 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc8ebavmsl118"]
+[gd_scene load_steps=31 format=3 uid="uid://dc8ebavmsl118"]
 
 [ext_resource type="Script" uid="uid://baflbxpbs52v5" path="res://src/organisms/enemies/npc/BRAIN/vision_system/field_of_view_component.gd" id="1_6hq3w"]
-[ext_resource type="Script" uid="uid://c41jqx3318kyo" path="res://src/organisms/enemies/npc/vision_system.gd" id="1_n0ker"]
+[ext_resource type="Script" uid="uid://yfo473las6ux" path="res://src/organisms/enemies/npc/brain.gd" id="1_cqdnt"]
+[ext_resource type="Script" uid="uid://c41jqx3318kyo" path="res://src/organisms/enemies/npc/BRAIN/vision_system/vision_system.gd" id="1_n0ker"]
+[ext_resource type="Script" uid="uid://tcnfg0jbotqd" path="res://src/organisms/enemies/npc/BRAIN/brain_system/brain_system.gd" id="1_x70rg"]
 [ext_resource type="Script" uid="uid://c32c54ql8066n" path="res://src/organisms/enemies/npc/BRAIN/vision_system/target_recognition_component.gd" id="2_10n1b"]
+[ext_resource type="Script" uid="uid://b4cv3dhp52wy8" path="res://src/organisms/enemies/npc/BRAIN/brain_system/blackboard.gd" id="2_aa7mi"]
 [ext_resource type="Script" uid="uid://doybhia5r52wh" path="res://src/organisms/enemies/npc/BRAIN/vision_system/raycasting_component.gd" id="2_tedad"]
 [ext_resource type="Script" uid="uid://b85wnym0fyk5v" path="res://src/organisms/enemies/npc/BRAIN/vision_system/eye_damage_controller.gd" id="3_a740e"]
+[ext_resource type="Script" uid="uid://oyt8cvityapc" path="res://src/organisms/enemies/npc/BRAIN/brain_system/ai_state_manager.gd" id="3_bsyuw"]
 [ext_resource type="Script" uid="uid://cqdjyy7xxeemc" path="res://src/organisms/enemies/npc/BRAIN/vision_system/blink_controller.gd" id="3_n0ker"]
 [ext_resource type="Script" path="res://src/organisms/enemies/npc/BRAIN/vision_system/pixel_light_detector.gd" id="4_16v5g"]
 [ext_resource type="Script" uid="uid://dbn04226ybwnh" path="res://src/organisms/enemies/npc/BRAIN/vision_system/memory_vision_component.gd" id="5_k0lmj"]
+[ext_resource type="Script" uid="uid://d4f7f4nfydqym" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/wander_state.gd" id="6_wmhpm"]
 [ext_resource type="Script" uid="uid://crxkqs7w05ldu" path="res://src/organisms/enemies/npc/BRAIN/vision_system/vision_state_manager.gd" id="7_5rb8o"]
+[ext_resource type="Script" uid="uid://2te2xea5snc6" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/follow_state.gd" id="7_6htpg"]
+[ext_resource type="Script" uid="uid://chgi01qryxp7m" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/idle_state.gd" id="8_5fivr"]
+[ext_resource type="Script" uid="uid://rvnp2l482w8m" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/patrol_state.gd" id="9_mymsd"]
 [ext_resource type="Script" uid="uid://gpp3fh85k87c" path="res://src/organisms/enemies/npc/BRAIN/vision_system/vision_perception_modifier.gd" id="9_sgchq"]
+[ext_resource type="Script" uid="uid://beoligfnrlah2" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/investigate_state.gd" id="10_snyhj"]
+[ext_resource type="Script" uid="uid://bsqbton2lmyc1" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/motrix_system.gd" id="11_5oxtv"]
+[ext_resource type="Script" uid="uid://bkcl3bkxa2i81" path="res://src/organisms/enemies/npc/BRAIN/brain_system/states/flee_state.gd" id="11_ewf56"]
+[ext_resource type="Script" uid="uid://cir8o2xm07ghr" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/movement_controller.gd" id="11_q47lm"]
+[ext_resource type="Script" uid="uid://c6oc8r3dyf8qk" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/motion_state_manager.gd" id="11_qeqif"]
+[ext_resource type="Script" uid="uid://dw3s7slsv5oas" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/locomotion_component.gd" id="13_q5w4r"]
+[ext_resource type="Script" uid="uid://c1febdvdw11ap" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/navigation_component.gd" id="14_kbun1"]
+[ext_resource type="Script" uid="uid://63wf1tdm8kpd" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/obstacle_avoidance_component.gd" id="15_g37e1"]
+[ext_resource type="Script" uid="uid://cwjgb3yk1es7w" path="res://src/organisms/enemies/npc/BRAIN/motrix_system/destination_memory_component.gd" id="16_4q60d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tedad"]
 albedo_color = Color(0.696667, 0.3, 1, 1)
@@ -18,7 +35,7 @@ albedo_color = Color(0.696667, 0.3, 1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tedad"]
 
-[node name="NPC" type="RigidBody3D"]
+[node name="NPC" type="CharacterBody3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material = SubResource("StandardMaterial3D_tedad")
@@ -27,6 +44,44 @@ material = SubResource("StandardMaterial3D_tedad")
 shape = SubResource("BoxShape3D_tedad")
 
 [node name="BRAIN" type="Node3D" parent="."]
+script = ExtResource("1_cqdnt")
+
+[node name="BrainSystem" type="Node3D" parent="BRAIN" node_paths=PackedStringArray("vision_system", "motrix_system", "state_manager")]
+script = ExtResource("1_x70rg")
+vision_system = NodePath("../VisionSystem")
+motrix_system = NodePath("../MotrixSystem")
+state_manager = NodePath("AIStateManager")
+
+[node name="Blackboard" type="Node3D" parent="BRAIN/BrainSystem"]
+script = ExtResource("2_aa7mi")
+
+[node name="AIStateManager" type="Node3D" parent="BRAIN/BrainSystem" node_paths=PackedStringArray("idle_state", "wander_state", "patrol_state", "investigate_state", "follow_state", "flee_state")]
+script = ExtResource("3_bsyuw")
+idle_state = NodePath("IdleState")
+wander_state = NodePath("WanderState")
+patrol_state = NodePath("PatrolState")
+investigate_state = NodePath("InvestigateState")
+follow_state = NodePath("FollowState")
+flee_state = NodePath("FleeState")
+debug_enabled = true
+
+[node name="WanderState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("6_wmhpm")
+
+[node name="FollowState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("7_6htpg")
+
+[node name="IdleState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("8_5fivr")
+
+[node name="PatrolState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("9_mymsd")
+
+[node name="InvestigateState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("10_snyhj")
+
+[node name="FleeState" type="Node3D" parent="BRAIN/BrainSystem/AIStateManager"]
+script = ExtResource("11_ewf56")
 
 [node name="VisionSystem" type="Node3D" parent="BRAIN" node_paths=PackedStringArray("state_manager", "blink_controller", "eye_damage_controller", "fov_component", "raycast_component", "light_detector", "target_recognition", "memory_vision", "perception_modifier")]
 script = ExtResource("1_n0ker")
@@ -39,7 +94,6 @@ light_detector = NodePath("TargetRecognitionComponent/PixelLightDetector")
 target_recognition = NodePath("TargetRecognitionComponent")
 memory_vision = NodePath("MemoryVisionComponent")
 perception_modifier = NodePath("VisionPerceptionModifier")
-debug_enabled = true
 
 [node name="VisionStateManager" type="Node3D" parent="BRAIN/VisionSystem"]
 script = ExtResource("7_5rb8o")
@@ -68,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457086, 0, 0)
 script = ExtResource("1_6hq3w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BRAIN/VisionSystem/TargetRecognitionComponent/FieldOfViewComponent"]
-transform = Transform3D(-4.37114e-08, 4.24001, -4.37114e-08, 0, -1.85337e-07, -1, -1, -1.85337e-07, 1.91069e-15, -4.06985, 0.0171547, 0)
+transform = Transform3D(-4.37114e-08, 4.24001, -4.37114e-08, 0, -1.85337e-07, -1, -1, -1.85337e-07, 1.91069e-15, 4.87791, 0.0171547, 0)
 shape = SubResource("CylinderShape3D_tedad")
 debug_color = Color(0.955629, 2.40654e-06, 0.542208, 0.42)
 
@@ -78,3 +132,38 @@ script = ExtResource("2_tedad")
 [node name="MemoryVisionComponent" type="Node3D" parent="BRAIN/VisionSystem" node_paths=PackedStringArray("target_recognition")]
 script = ExtResource("5_k0lmj")
 target_recognition = NodePath("../TargetRecognitionComponent")
+
+[node name="MotrixSystem" type="Node3D" parent="BRAIN" node_paths=PackedStringArray("movement_controller", "state_manager", "navigation", "locomotion", "obstacle_avoidance", "destination_memory")]
+script = ExtResource("11_5oxtv")
+movement_controller = NodePath("MovementController")
+state_manager = NodePath("MotionStateManager")
+navigation = NodePath("NavigationComponent")
+locomotion = NodePath("LocomotionComponent")
+obstacle_avoidance = NodePath("ObstacleAvoidanceComponent")
+destination_memory = NodePath("DestinationMemoryComponent")
+
+[node name="MotionStateManager" type="Node3D" parent="BRAIN/MotrixSystem"]
+script = ExtResource("11_qeqif")
+
+[node name="MovementController" type="Node3D" parent="BRAIN/MotrixSystem" node_paths=PackedStringArray("state_manager", "navigation", "locomotion", "obstacle_avoidance", "destination_memory")]
+script = ExtResource("11_q47lm")
+state_manager = NodePath("../MotionStateManager")
+navigation = NodePath("../NavigationComponent")
+locomotion = NodePath("../LocomotionComponent")
+obstacle_avoidance = NodePath("../ObstacleAvoidanceComponent")
+destination_memory = NodePath("../DestinationMemoryComponent")
+
+[node name="LocomotionComponent" type="Node3D" parent="BRAIN/MotrixSystem"]
+script = ExtResource("13_q5w4r")
+
+[node name="NavigationComponent" type="Node3D" parent="BRAIN/MotrixSystem"]
+script = ExtResource("14_kbun1")
+debug_enabled = true
+draw_path = true
+draw_terrain_costs = true
+
+[node name="ObstacleAvoidanceComponent" type="Node3D" parent="BRAIN/MotrixSystem"]
+script = ExtResource("15_g37e1")
+
+[node name="DestinationMemoryComponent" type="Node3D" parent="BRAIN/MotrixSystem"]
+script = ExtResource("16_4q60d")
